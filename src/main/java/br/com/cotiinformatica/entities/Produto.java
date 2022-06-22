@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -34,9 +36,13 @@ public class Produto {
 	private String descricao;
 
 	@Column(name = "preco", nullable = false)
-	private String preco;
+	private Double preco;
 
 	@Column(name = "quantidade", nullable = false)
-	private String quantidade;
+	private Integer quantidade;
+	
+	@ManyToOne //MUITOS PRODUTOS PARA 1 FORNECEDOR
+	@JoinColumn(name = "idfornecedor")
+	private Fornecedor fornecedor;
 
 }
